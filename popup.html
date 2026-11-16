@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Cache Poisoning Hunter</title>
+  <style>
+    body { width: 380px; margin: 0; padding: 10px 12px; background: #0f172a;
+      color: #e2e8f0; font: 12px/1.5 system-ui, sans-serif; }
+    h1 { font-size: 14px; margin: 0 0 6px; }
+    .info { color: #94a3b8; margin-bottom: 8px; }
+    h2 { font-size: 12px; margin: 10px 0 4px; color: #fbbf24; }
+    ul { margin: 0 0 6px; padding-left: 16px; }
+    li { margin-bottom: 2px; word-break: break-all; }
+    .ok { color: #4ade80; }
+    .bad { color: #f87171; }
+    button { width: 100%; padding: 8px; background: #b45309; color: #fff;
+      border: 0; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    button:disabled { background: #475569; cursor: default; }
+    .hint { color: #64748b; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>🎯 Cache Poisoning Hunter</h1>
+  <div class="info" id="info">sem dados da aba ainda</div>
+  <h2>Passivo</h2>
+  <ul id="passivo"><li>—</li></ul>
+  <h2>Portão (buster keyed?)</h2>
+  <ul id="gate"><li>—</li></ul>
+  <h2>Testes</h2>
+  <ul id="testes"><li>—</li></ul>
+  <button id="run">▶ Rodar testes (cache-buster seguro)</button>
+  <button id="copy" style="background:#1e293b;border:1px solid #475569;margin-top:6px">📋 Copiar report</button>
+  <label style="display:block;margin-top:8px"><input type="checkbox" id="sniper"> 🎯 modo sniper — rodar sozinho ao navegar (só quando cache é detectado e buster provado)</label>
+  <div class="hint">Regra de ouro: 1º prova que o param zzcp* É keyed (HIT no repeat, MISS na chave nova).
+    Só então testa headers unkeyed, 1 request envenenada por header, SEMPRE na própria chave.
+    Se o portão falhar, nada é enviado. Nunca envenena chave compartilhada.</div>
+  <script src="popup.js"></script>
+</body>
+</html>

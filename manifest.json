@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Cache Poisoning Hunter",
+  "version": "0.2.0",
+  "description": "Sniper de cache poisoning: detecta cache/CDN, prova que o cache-buster isola a chave (regra de ouro), testa headers unkeyed (reflexão XSS/redirect/CPDoS), ESI (RCE path) e param cloaking. 100% com cache-buster único por request — nunca envenena chave compartilhada. Modo sniper: roda sozinho ao navegar.",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Cache Poisoning Hunter"
+  },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
